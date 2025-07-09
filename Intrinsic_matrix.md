@@ -42,6 +42,7 @@ $$
 \text{sensor\_diagonal} = \frac{\text{full\_frame\_diagonal}}{\text{crop\_factor}}
 $$
 
+
 For a 4:3 aspect ratio sensor:
 
 $$
