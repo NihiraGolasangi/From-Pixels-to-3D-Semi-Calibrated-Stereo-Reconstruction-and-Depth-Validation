@@ -43,6 +43,10 @@ This section documents the stereo image collection process for reconstructing 3D
 
 ![Stereo Setup Schematic](Schematic.jpg)
 
+
+Citations:
+1. https://support.apple.com/en-us/111874
+
 ## Steps
 1. [Step 1: Data Collection](DataCollection.md)
 2. [Step 2: Intrinsic Matrix Calculations](Intrinsic_matrix.md)
