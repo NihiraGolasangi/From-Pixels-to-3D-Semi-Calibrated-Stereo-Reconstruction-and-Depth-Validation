@@ -25,9 +25,8 @@ This section documents the stereo image collection process for reconstructing 3D
 
 ### **Stereo Geometry**
 - **Number of Views:** 2  
-- **Baseline Distance:** XX cm *(fill in from schematic)*  
-- **Camera Height from Surface:** YY cm *(if relevant)*  
-- **Camera Orientation:** Both images taken with phones held in hand with mild angular offset (~10–15°).  
+- **Baseline Distance:** 36 cm  
+- **Camera Orientation:** Both images taken with phones placed on a stand with mild angular offset (~10–15°).  
 - **Object Distance from Camera:** ZZ cm *(center of scene)*  
 
 ---
@@ -44,13 +43,15 @@ This section documents the stereo image collection process for reconstructing 3D
 
 ![Stereo Setup Schematic](Schematic.jpg)
 
-
+## Steps
+1. [Step 1: Data Collection](DataCollection.md)
+2. [Step 2: Intrinsic Matrix Calculations](Intrinsic_matrix.md)
 
 
 
 ## ✅ Project To-Do: From Stereo Images to Depth Validation
 
----
+-----
 
 ### 🟩 1. Stereo Pair Selection
 - [ ] Detect SIFT (or ORB) features in all 10 × 10 stereo pairs.
