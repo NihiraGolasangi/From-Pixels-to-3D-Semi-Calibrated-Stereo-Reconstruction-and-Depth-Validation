@@ -24,9 +24,10 @@
 
 The crop factor is calculated as:
 
-$$
+<!-- $$
 \text{crop\_factor} = \frac{\text{equivalent\_focal\_length}_{mm}}{\text{focal\_length}_{mm}}
-$$
+$$ -->
+`crop_factor = equivalent_focal_length_mm / focal_length_mm`
 
 This determines how your sensor compares to a full-frame (35mm) sensor.
 
