@@ -37,12 +37,12 @@ Assume a full-frame diagonal of **43.3 mm** (standard for 35mm sensors).
 
 Calculate the sensor diagonal:
 
-![sensor Diagonal](images/sensor_diagonal.png)
+![sensor Diagonal](../images/sensor_diagonal.png)
 
 For a 4:3 aspect ratio sensor:
 
 
-![Sensor digaonal for 4:3 aspect ratio](images/sensor_diagonal_for_4:3.png)
+![Sensor digaonal for 4:3 aspect ratio](../images/sensor_diagonal_for_4:3.png)
 
 
 
@@ -50,14 +50,14 @@ For a 4:3 aspect ratio sensor:
 
 Convert the focal length from millimeters to pixels:
 
-![focal length](images/focal_length.png)
+![focal length](../images/focal_length.png)
 
 
 ## 6. Set Principal Point
 
 Assume the principal point is at the image center:
 
-![Principal Point](images/principal_point.png)
+![Principal Point](../images/principal_point.png)
 
 
 
@@ -65,7 +65,7 @@ Assume the principal point is at the image center:
 
 The intrinsic matrix $K$ is:
 
-![Matrix K](images/K.png)
+![Matrix K](../images/K.png)
 
 ## 8. Notes & Limitations
 
