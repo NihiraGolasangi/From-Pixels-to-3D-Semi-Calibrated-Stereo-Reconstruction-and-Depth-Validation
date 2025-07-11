@@ -49,7 +49,7 @@ Citations:
 
 ## Steps
 1. [Step 1: Data Collection](DataCollection.md)
-2. [Step 2: Intrinsic Matrix Calculations](Intrinsic_matrix.md)
+2. [Step 2: Intrinsic Matrix Calculations](steps/Intrinsic_matrix.md)
 
 
 
