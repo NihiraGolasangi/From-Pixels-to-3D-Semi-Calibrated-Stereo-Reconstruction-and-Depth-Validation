@@ -24,10 +24,8 @@
 
 The crop factor is calculated as:
 
-<!-- $$
-\text{crop\_factor} = \frac{\text{equivalent\_focal\_length}_{mm}}{\text{focal\_length}_{mm}}
-$$ -->
-`crop_factor = equivalent_focal_length_mm / focal_length_mm`
+![crop factor equation](images/crop_factor.png)
+
 
 This determines how your sensor compares to a full-frame (35mm) sensor.
 
@@ -39,24 +37,12 @@ Assume a full-frame diagonal of **43.3 mm** (standard for 35mm sensors).
 
 Calculate the sensor diagonal:
 
-$$
-\text{sensor\_diagonal} = \frac{\text{full\_frame\_diagonal}}{\text{crop\_factor}}
-$$
-
+![sensor Diagonal](images/sensor_diagonal.png)
 
 For a 4:3 aspect ratio sensor:
 
-$$
-x = \frac{\text{sensor\_diagonal}}{5}
-$$
 
-$$
-\text{sensor\_width}_{mm} = 4x
-$$
-
-$$
-\text{sensor\_height}_{mm} = 3x
-$$
+![Sensor digaonal for 4:3 aspect ratio](images/sensor_diagonal_for_4:3.png)
 
 
 
@@ -64,27 +50,14 @@ $$
 
 Convert the focal length from millimeters to pixels:
 
-$$
-f_x = \frac{\text{focal\_length}_{mm} \times \text{image\_width}}{\text{sensor\_width}_{mm}}
-$$
-
-$$
-f_y = \frac{\text{focal\_length}_{mm} \times \text{image\_height}}{\text{sensor\_height}_{mm}}
-$$
-
+![focal length](images/focal_length.png)
 
 
 ## 6. Set Principal Point
 
 Assume the principal point is at the image center:
 
-$$
-c_x = \frac{\text{image\_width}}{2}
-$$
-
-$$
-c_y = \frac{\text{image\_height}}{2}
-$$
+![Principal Point](images/principal_point.png)
 
 
 
@@ -92,14 +65,7 @@ $$
 
 The intrinsic matrix $K$ is:
 
-$$
-K = \begin{bmatrix}
-f_x & 0 & c_x \\
-0 & f_y & c_y \\
-0 & 0 & 1
-\end{bmatrix}
-$$
-
+![Matrix K](images/K.png)
 
 ## 8. Notes & Limitations
 
