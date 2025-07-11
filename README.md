@@ -41,7 +41,7 @@ This section documents the stereo image collection process for reconstructing 3D
 ###  **Scene Schematic**
 *Below is a schematic illustration of the stereo setup with all annotated distances.*
 
-![Stereo Setup Schematic](Schematic.jpg)
+![Stereo Setup Schematic](images/Schematic.jpg)
 
 
 Citations:

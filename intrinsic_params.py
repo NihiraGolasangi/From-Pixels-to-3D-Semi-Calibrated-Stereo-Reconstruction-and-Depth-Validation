@@ -99,7 +99,7 @@ def load_metadata(json_path: str) -> Dict[str, dict]:
 
 
 if __name__ == "__main__":
-    JSON_PATH = Path("/Users/nihiragolasangi/Developer/From-Pixels-to-3D-Semi-Calibrated-Stereo-Reconstruction-and-Depth-Validation/LEFT/image_metadata.json")
+    JSON_PATH = Path("LEFT/image_metadata.json")
     all_meta = load_metadata(JSON_PATH)
 
     # Work with the first image in the file
