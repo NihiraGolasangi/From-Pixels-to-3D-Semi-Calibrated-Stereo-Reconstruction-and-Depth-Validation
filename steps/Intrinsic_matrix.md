@@ -24,7 +24,7 @@
 
 The crop factor is calculated as:
 
-![crop factor equation](images/crop_factor.png)
+![crop factor equation](../images/crop_factor.png)
 
 
 This determines how your sensor compares to a full-frame (35mm) sensor.
