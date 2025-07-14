@@ -1,6 +1,7 @@
 from pathlib import Path
 import json
-from typing import Dict, Any, List, Tuple, Optional
+from typing import Dict, Any, List, Optional,Union
+import numpy as np
 
 
 class ImageMetadata:
@@ -89,6 +90,50 @@ class CameraIntrinsics:
         rows = ["[" + ", ".join(f"{v:.2f}" for v in row) + "]" for row in self.K]
         return "K = " + "\n    ".join(rows)
 
+# ------------------------------------------------------------------
+#  Convenience function
+# ------------------------------------------------------------------
+def get_intrinsic_matrix(
+        metadata_json: Union[str, Path],
+        image_key: str | None = None
+    ) -> np.ndarray:
+        """
+        Read EXIF‑like metadata from a JSON file and return the 3×3 intrinsic
+        matrix K for the requested image.
+
+        Parameters
+        ----------
+        metadata_json : str | Path
+            Path to the JSON file that maps image names → metadata dicts.
+        image_key : str | None
+            Which image’s metadata to use.  If None, the *first* entry is used.
+
+        Returns
+        -------
+        K : np.ndarray  (3 × 3)
+            Camera intrinsic matrix.
+        """
+        # --- load the JSON ---
+        with open(metadata_json, "r") as f:
+            meta_dict: Dict[str, Dict[str, Any]] = json.load(f)
+
+        if not meta_dict:
+            raise ValueError("Metadata file is empty")
+
+        # --- pick the requested image (or first one) ---
+        if image_key is None:
+            image_key, exif = next(iter(meta_dict.items()))
+        else:
+            try:
+                exif = meta_dict[image_key]
+            except KeyError:
+                raise KeyError(f"No metadata entry found for image '{image_key}'")
+
+        # --- wrap in helper classes and compute K ---
+        meta = ImageMetadata(exif)
+        K = np.asarray(CameraIntrinsics(meta).compute(), dtype=np.float64)
+
+        return K
 
 # --------------------------------------------------------------------------- #
 #  usage
@@ -99,14 +144,8 @@ def load_metadata(json_path: str) -> Dict[str, dict]:
 
 
 if __name__ == "__main__":
-    JSON_PATH = Path("LEFT/image_metadata.json")
-    all_meta = load_metadata(JSON_PATH)
+    json_path = "LEFT/image_metadata.json"
+    K = get_intrinsic_matrix(json_path)          
+    print("K =\n", K)
 
-    # Work with the first image in the file
-    first_name, first_meta_dict = next(iter(all_meta.items()))
-    meta = ImageMetadata(first_meta_dict)
-
-    intrinsics = CameraIntrinsics(meta)
-    K = intrinsics.compute()
-
-    print(f"{first_name} intrinsic matrix:\n{intrinsics}")
+    
