@@ -18,7 +18,7 @@ This study investigates the feasibility of recovering accurate depth information
    The essential matrix was decomposed to yield four candidate relative poses. The correct pose was identified by enforcing the positive depth constraint on triangulated points. Subsequently, 3D point coordinates were reconstructed via triangulation of the matched image points using the recovered relative pose.
 
 5. **Depth Validation:**
-   The reconstructed 3D points’ depth values were statistically analyzed and compared against the approximate physical baseline and known scene geometry. The consistency of the depth range and distribution provided empirical validation of the reconstruction accuracy.
+   The reconstructed 3D points’ depth values were analyzed and compared against the approximate physical baseline and known scene geometry. The consistency of the depth range and distribution provided empirical validation of the reconstruction accuracy.
 
 ---
 
