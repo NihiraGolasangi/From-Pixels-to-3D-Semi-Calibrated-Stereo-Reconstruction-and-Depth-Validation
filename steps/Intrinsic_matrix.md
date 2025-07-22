@@ -11,8 +11,8 @@ Where:
 Generally, the focal length provided in camera specifications or EXIF metadata is the 3D focal length in physical units (typically in millimeters). This focal length is the distance from the camera’s optical center to the image sensor, in 3D physical space.
 
 However, for computer vision tasks like stereo reconstruction, we need the effective focal lengths in pixels, denoted by:
-- $f_x = $ focal legth in pixels along x-axis
-- $f_y = $ focal legth in pixels along y-axis
+- $f_x = $ focal length in pixels along x-axis
+- $f_y = $ focal length in pixels along y-axis
 
 
 These are 2D projections of the 3D focal length, scaled according to the sensor dimensions and pixel density in each direction.
@@ -25,6 +25,8 @@ These are 2D projections of the 3D focal length, scaled according to the sensor 
 - $focal_{-}length_{mm}$ : Physical Focal length in mm
 - $sensor_{-}width_{mm}$, $sensor_{-}height_{mm}$ : Sensor width and height in mm
 - $image_{-}width$,$image_{-}height$: Image width and height in pixels
+
+Challenge is that we do not know the sensor dimensions. So first we estimated the sensor dimensions and then calculate $f_x$ and $f_y$
 
 ## Solution
 
