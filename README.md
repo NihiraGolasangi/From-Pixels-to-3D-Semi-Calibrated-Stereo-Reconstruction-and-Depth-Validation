@@ -56,7 +56,7 @@ This project explores the reconstruction of **absolute metric depth** from pairs
 Each pipeline step includes dedicated documentation and code for clarity:
 
 1. [Data Collection](steps/data_collection.md)
-2. [Intrinsic Matrix Calculations](steps/intrinsic_matrix.md)
+2. [Intrinsic Matrix Calculations](steps/Intrinsic_matrix.md)
 3. [Stereo Matching](steps/stereo_matching.md)
 4. [Essential Matrix Calculation](steps/essential_matrix.md)
 5. [Essential Matrix Decomposition](steps/essential_decomposition.md)
