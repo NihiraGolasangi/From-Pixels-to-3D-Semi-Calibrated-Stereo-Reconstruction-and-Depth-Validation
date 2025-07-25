@@ -61,24 +61,20 @@ def estimate_essential_and_pose(
     return E, R, t, inlier_mask
 
 
-# Example usage
+
 if __name__ == "__main__":
 
-
-    # Dummy values for testing
     json_path = "LEFT/image_metadata.json"
     K = get_intrinsic_matrix(json_path)
 
-    # Replace these with actual matched keypoints (pts1, pts2)
     left_img_path  = Path("LEFT/IMG_6404.jpg")
     right_img_path = Path("RIGHT/IMG_6414.jpg")
 
     pts1, pts2, matches, kpL, kpR = get_correspondences(
         left_img_path, right_img_path,
-        top_N=150,               # how many matches for geometry
-        ratio_thresh=0.75        # Lowe’s ratio
+        top_N=150,               
+        ratio_thresh=0.75        
     )
-
 
     E, R, t, inliers = estimate_essential_and_pose(pts1, pts2, K)
     print("E:\n", E)

@@ -10,15 +10,17 @@
 ### 2. Detect Keypoints & Descriptors using SIFT
 - Apply SIFT to both the left and right images.
 - We detect:
-    - `Keypoints` : Location of distinctive image features.
-    - `Descriptors` : 128D feature vector describing each keypoint.
+    - `Keypoints` : Location of distinctive image features. List of cv2.KeyPoint objects.
+    - `Descriptors` : 128D feature vector describing each keypoint. Numpy array of dimension `(N,128)`
 
 ### 3. KNN Descriptor Matching (k=2)
-- Perform k-nearest neighbor matching of descriptors using the L2 norm.
-- For each descriptor in `img_left`, we find its 2 nearest matches in  `img_right`
+- We use Brute-Force k-NN Matcher `BFMatcher.knnMatch` to find, for each descriptor in the left image, the top 2 best-matching descriptors in the right image based on Euclidean (L2) distance.
 - Here descriptor `d1` from left image will have two matches from the right image:
     - `m` : lowest distance from `d1` (best match)
     - `n` : second lowest distance from `d1` (second best match)
+- `matches` is a list of lists.
+    - Each outer list element corresponds to one descriptor from the left image (des1).
+    - Each inner list contains the top k matches (i.e., DMatch objects) from the right image (des2), sorted by distance.
 
 
 ### 4. Lowe’s Ratio Test for Filtering
@@ -44,8 +46,12 @@
     - `queryIdx` : index of the matched keypoint in the left image
     - `trainIdx` : index of the matched keypoint in the right image
 - We use these attribute to construct `pts1` and `pts2`
-- `kpL[m.queryIdx].pt` → returns (x, y) coordinate of the keypoint in the left image, `kpL` is the descriptor we got after applying SIFT
+- `kpL[m.queryIdx].pt` → returns (x, y) coordinate of the keypoint in the left image, `kpL` is the list of `cv2.KeyPoint` we got after applying SIFT to the left image.
 - Likewise for `kpR[m.trainIdx].pt` in the right image
+
+- So, index `i` in both arrays corresponds to a matched pair of points between the left and right images.
+    - `pts1[i]` is the (x, y) coordinate of a keypoint in the left image.
+    - `pts2[i]` is the corresponding (x, y) coordinate of the matching keypoint in the right image.
 
 
 

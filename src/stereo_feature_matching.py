@@ -192,13 +192,13 @@ if __name__ == "__main__":
 
     pts1, pts2, matches, kpL, kpR = get_correspondences(
         left_img_path, right_img_path,
-        top_N=150,               # how many matches for geometry
-        ratio_thresh=0.75        # Lowe’s ratio
+        top_N=150,               
+        ratio_thresh=0.75      
     )
 
     print("pts1 shape:", pts1.shape, "pts2 shape:", pts2.shape)
 
-    # quick visualization of the best 5
+    # visualization of the best 5
     draw_top_matches_thick(
         cv2.imread(str(left_img_path), cv2.IMREAD_GRAYSCALE),
         kpL,
