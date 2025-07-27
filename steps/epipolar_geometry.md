@@ -20,3 +20,56 @@ In other words, if the cameras are calibrated, the epipolar constraint guarantee
 
 This simple truth is easy to see once we understand the geometry well!
 
+Now, let’s move to 3D space. The **epipolar plane** is defined by the centers of the two cameras and the 3D point we are observing. This means:
+- The ray from the left camera center through $x_l$ lies in this plane.
+- The rotated ray from the right camera center through $x_r$ also lies in this plane.
+- The translation vector $t = C_r - C_l$ (between the two cameras) also lies in this plane.
+
+To express this mathematically, we use the **scalar triple product**, which tells us whether three vectors are coplanar. Coplanarity is ensured when the triple product is zero:
+$$
+x_r^\top [t]_\times R x_l = 0
+$$
+
+Here:
+-  $t$ cross  $R x_l$ = $[t]_x (R x_l)$ is a vector **perpendicular** to the epipolar plane. [Skew Symmetric matrix of a vector](/steps/auxiliary.md#skew-symmetric-matrix-of-a-vector)
+- For $x_r$ to lie in the same plane, it must also be **perpendicular** to this vector, meaning their dot product must be zero.
+
+(See the explanation of the [Scalar Triple Product](/steps/auxiliary.md#scalar-triple-product) for more details.)
+
+### Note : Coordinate Frames of $x_l$ , $x_r$ , and $R x_l$
+
+Let's take a quick check on what coordinate system these vectors are expressed in.
+
+- $x_l$ is the normalized image point expressed as a 3D ray **in the left camera’s coordinate system**.  Going from center of the left camera lens through the $(u_l,v_l)$ into the 3D space.
+- $x_r$ is the corresponding normalized image point expressed as a 3D ray **in the right camera’s coordinate system**.  Going from center of the right camera lens through the $(u_r,v_r)$ into the 3D space.
+- To compare $x_l$ and $x_r$, we rotate $x_l$ using the rotation matrix $R$, so $R x_l$ is the vector $x_l$ **expressed in the right camera’s coordinate system**.  
+- The translation vector $t$ from the left to right camera is also defined **in the right camera’s coordinate system**.  
+- Therefore, in the epipolar constraint  
+$$
+x_r^\top [t]_\times R x_l = 0
+$$  
+  all vectors are expressed in the right camera frame.
+
+Understanding that all these vectors are in 3D Euclidean space, which means 4D homogeneous coordinates. [Homogeneous Coordinates](/steps/auxiliary.md#homogeneous-coordinates)
+
+
+
+## Essential Matrix
+
+Now that we have the epipolar constaint mathematically expressed :
+$$
+x_r^\top [t]_\times R x_l = 0
+$$
+
+We define Essential Matrix $E$ as :
+$$
+E = [t]_\times R
+$$
+
+It conbines the extrinsics of the two camera positions : the relative rotation and translation between the two cameras in a $3$ x $3$ matrix!
+
+With essential matrix the epipolar contraint can be rewritten as:
+
+$$
+x_r^TEx_l=0
+$$

@@ -32,3 +32,11 @@ Crop factor (also called as the focal length multiplier) is a ratio that describ
 
 
 Same value could be derived from ratio of diagonals of a full-frame camera to current camera. [We use this to our advantage to calculate the current camera diagonal to obtain sensor dimensions]
+
+
+
+## Scalar Triple Product
+
+## Skew Symmetric matrix of a vector
+
+## Homogeneous Coordinates
