@@ -40,3 +40,38 @@ Same value could be derived from ratio of diagonals of a full-frame camera to cu
 ## Skew Symmetric matrix of a vector
 
 ## Homogeneous Coordinates
+
+## Normalization of image coordinates
+
+Suppose we have a 2D pixel coordinate $(u,v)$ which is expressed as $(u,v,1)$ in homogeneous coordinates.We normalize this image coordinate by :
+
+$$
+x=K^{-1}u
+$$
+
+$$
+\begin{bmatrix}
+x\\
+y\\
+1
+\end{bmatrix}
+= K^{-1}
+\begin{bmatrix}
+u \\
+v \\
+1
+\end{bmatrix}
+$$
+
+Here, 
+- $K$ : Camera Intrinsic Matrix
+- $x$ : is the direction of the 3D ray in the left camera’s coordinate system (not the 3D point itself — depth is unknown)
+- $u$ : is the homogeneous image coordinate.
+
+
+
+## 5 - point Algorithm
+
+## RANSAC
+
+## Singular Value decomposition

@@ -40,8 +40,8 @@ Here:
 
 Let's take a quick check on what coordinate system these vectors are expressed in.
 
-- $x_l$ is the normalized image point expressed as a 3D ray **in the left camera’s coordinate system**.  Going from center of the left camera lens through the $(u_l,v_l)$ into the 3D space.
-- $x_r$ is the corresponding normalized image point expressed as a 3D ray **in the right camera’s coordinate system**.  Going from center of the right camera lens through the $(u_r,v_r)$ into the 3D space.
+- $x_l$ is the normalized image point expressed as a ray **in the left camera’s coordinate system**.  Going from center of the left camera lens through the $(u_l,v_l)$ into the 3D space. $x_l$ is a $3$ x $1$ (in Homogeneous coordinates) direction vector. 
+- $x_r$ is the corresponding normalized image point expressed as a 3D ray **in the right camera’s coordinate system**.  Going from center of the right camera lens through the $(u_r,v_r)$ into the 3D space. Dimensions are same as $x_l$
 - To compare $x_l$ and $x_r$, we rotate $x_l$ using the rotation matrix $R$, so $R x_l$ is the vector $x_l$ **expressed in the right camera’s coordinate system**.  
 - The translation vector $t$ from the left to right camera is also defined **in the right camera’s coordinate system**.  
 - Therefore, in the epipolar constraint  
@@ -73,3 +73,27 @@ With essential matrix the epipolar contraint can be rewritten as:
 $$
 x_r^TEx_l=0
 $$
+
+A key observation here is that Essential matrix because it is an encoding of rotation and translation between the two cameras , exists in physical (Euclidean) space. It operates on normalized image coordinates (rays), which we can only get if we know the intrinsic parameters of the cameras.
+
+Now what if we donot know the intrisics of a camera? We cannot normalize the coordinates and hence connot use essential matrix directly.
+
+To solve this problem we define a Fundamental matrix.
+
+## Fundamental Matrix
+
+We rewrite the epipolar contraint usinf fundamental matrix as: 
+$$
+U_r^TFU_l = 0
+$$
+
+Here $U_r$ and $U_l$ are unormalized image coordinates that are corresponding image points that match in the left and right image respectively.
+
+Fundamental matrix encodes not just the extrinsics parameters but also instrinsic parameters into it. 
+
+In terms of essesntial matrix, fundamental matrix can be written as:
+$$
+F = K_r^{-1}EK_l^{-1}
+$$
+Where , $K_r$ and $K_l$ are the intrisic matrices of right and left cameras respectively. [Normalization of image coordinates](/steps/auxiliary.md#normalization-of-image-coordinates)
+
