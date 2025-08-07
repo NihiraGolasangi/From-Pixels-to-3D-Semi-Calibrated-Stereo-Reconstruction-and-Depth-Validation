@@ -24,7 +24,7 @@ Couple of high level steps that happen inside of `cv2.findEssentialMat()`:
 - Uses the 5-point algorithm to estimate $E$ from normalized correspondances.
 -  5-point algorithm is an algorithm that uses It finds the Essential Matrix $E$ from 5 pairs of matching points.
     
-** Finfing fundamnental matrix `cv2.findFundamentalMat()` uses 8-point algorithm to estimate $F$
+** Finding fundamnental matrix `cv2.findFundamentalMat()` uses 8-point algorithm to estimate $F$
 ### 3. Robust estimation with RANSAC - [RANSAC](/steps/auxiliary.md#ransac)
 - Applies RANSAC to handle outliers (incorrect matches).
  - Randomly samples minimal sets, computes candidate $E$, and chooses the one with most inliers under the reprojection threshold.
