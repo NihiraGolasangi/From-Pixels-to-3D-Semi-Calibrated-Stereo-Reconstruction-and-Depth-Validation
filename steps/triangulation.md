@@ -18,6 +18,30 @@ Triangulation is the method used to find the 3D position of a point using two or
 
 These matrices convert 3D points in the world into 2D pixel coordinates in the respective images.
 
+$$
+   [R \mid t] =
+   \begin{bmatrix}
+   r_{11} & r_{12} & r_{13} & t_1 \\
+   r_{21} & r_{22} & r_{23} & t_2 \\
+   r_{31} & r_{32} & r_{33} & t_3
+   \end{bmatrix}
+   \quad \in \mathbb{R}^{3 \times 4}
+   $$
+
+   $$
+   K =
+   \begin{bmatrix}
+   f_x & 0 & c_x  \\
+   0 & f_y &c_y \\
+   0 & 0 & 1 
+   \end{bmatrix}
+   \quad \in \mathbb{R}^{3 \times 3}
+   $$
+
+   Multiply these both $K[R|t]$ we get a $3 \times 4$ matrix.
+
+
+
 ### 3. Keep Inlier Matches Only
 - Keep only the good matches (inliers from RANSAC) to ensure reliable triangulation. - Points that agree with teh essential matrix.
 
@@ -50,10 +74,22 @@ These matrices convert 3D points in the world into 2D pixel coordinates in the r
 
 Goal:  
 Find the 3D homogeneous point  
-$$ \mathbf{X} = [X, Y, Z, 1]^T \in \mathbb{P}^3 $$  
-such that  
-$$ \mathbf{x}_1 \sim P_1 \mathbf{X}, \quad \mathbf{x}_2 \sim P_2 \mathbf{X} $$
+$$
+\mathbf{X} = \begin{bmatrix} X \\ Y \\ Z \\ 1 \end{bmatrix} \in \mathbb{P}^3
+$$
 
+such that its image projections are
+
+$$
+\mathbf{x}_1 \sim P_1 \mathbf{X}, \quad 
+\mathbf{x}_2 \sim P_2 \mathbf{X}
+$$
+
+where  
+- $\mathbf{X}$ is the homogeneous 3D world point,  
+- $\mathbf{x}_1, \mathbf{x}_2 \in \mathbb{P}^2$ are the corresponding homogeneous image points,  
+- $P_1, P_2 \in \mathbb{R}^{3 \times 4}$ are the camera projection matrices,  
+- and $\sim$ denotes equality up to scale.
 
 ### Step 1: Cross product constraint
 
@@ -107,6 +143,12 @@ Use SVD to solve:
 $$ A = U \Sigma V^T \quad \Rightarrow \quad  \mathbf{X} = \mathbf{v}_4 $$
 
 where $\mathbf{v}_4$ is the last column of $V$
+
+We want a non-trivial solution to $ A \mathbf{X} = 0 $  
+- The *null space* of $A$ corresponds to the directions where $ A \mathbf{X} $ is minimized.  
+- The vector $\mathbf{v}_4 = V[:,4] $ (the last column of $V$) is the singular vector corresponding to the **smallest singular value** $\sigma_4$  
+
+
 
 Normalize $ \mathbf{X} $:
 
